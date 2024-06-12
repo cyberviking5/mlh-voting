@@ -56,16 +56,31 @@ export default function Home() {
     };
 
     return (
-        <div className="container mx-auto max-w-md mt-8 p-6 bg-white rounded-lg shadow-md">
-            <h1 className="text-3xl font-semibold mb-6 text-center">Vote for Your Favorite Option</h1>
-            <div className="flex justify-between mb-6">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-1/2 mr-2" onClick={() => castVote(1)}>Option 1</button>
-                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded w-1/2 ml-2" onClick={() => castVote(2)}>Option 2</button>
+        <div className="container mx-auto max-w-md mt-10 p-8 bg-gray-100 rounded-xl shadow-lg">
+            <h1 className="text-4xl font-bold mb-8 text-center text-gray-800">Vote for Your Favorite Option</h1>
+            <div className="flex justify-between mb-8">
+                <button
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-5 rounded-lg w-1/2 mr-4 transition duration-300"
+                    onClick={() => castVote(1)}
+                >
+                    Option 1
+                </button>
+                <button
+                    className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-5 rounded-lg w-1/2 ml-4 transition duration-300"
+                    onClick={() => castVote(2)}
+                >
+                    Option 2
+                </button>
             </div>
-            <div className="flex justify-center">
-                <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" onClick={showResults}>Show Results</button>
+            <div className="flex justify-center mb-4">
+                <button
+                    className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300"
+                    onClick={showResults}
+                >
+                    Show Results
+                </button>
             </div>
-            <div id="message" className="text-red-500 mt-4 text-center">{message}</div>
+            <div id="message" className="text-gray-800 mt-6 text-center text-lg">{message}</div>
         </div>
     );
 }
