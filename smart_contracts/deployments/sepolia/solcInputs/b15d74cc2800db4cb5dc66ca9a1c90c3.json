@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Voting.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ncontract Voting {\n    uint8 constant Option1 = 1;\n    uint8 constant Option2 = 2;\n\n    mapping(uint8 => uint256) public votes;\n    mapping(address => bool) public hasVoted;\n\n    function vote(uint8 _option) public {\n        require(_option == Option1 || _option == Option2, \"Invalid option\");\n        require(!hasVoted[msg.sender], \"You have already voted\");\n        votes[_option]++;\n        hasVoted[msg.sender] = true;\n    }\n\n    function getWinningOption() public view returns (uint8) {\n        if (votes[Option1] > votes[Option2]) {\n            return Option1;\n        } else if (votes[Option2] > votes[Option1]) {\n            return Option2;\n        } else {\n            return Option1;\n        }\n    }\n\n    function getTotalVotes(uint8 _option) public view returns (uint256) {\n        require(_option == Option1 || _option == Option2, \"Invalid option\");\n        return votes[_option];\n    }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
